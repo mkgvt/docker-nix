@@ -53,9 +53,10 @@ COPY --from=FETCHER /root /root
 COPY --from=FETCHER /tmp /tmp
 
 RUN ["/nix/var/nix/profiles/default/bin/ln", "-s", "/nix/var/nix/profiles/default/bin", "/bin"]
+
 RUN \
   mkdir -p /usr/bin /etc/ssl/certs && \
-  ln -s $NIX_SSL_CERT_FILE /etc/ssl/certs/ca-certificates.crt && \
+  ln -s /nix/var/nix/profiles/default/etc/ssl /etc/ssl && \
   ln -s /nix/var/nix/profiles/default/etc/protocols /etc/protocols && \
   ln -s /nix/var/nix/profiles/default/etc/services /etc/services && \
   ln -s /nix/var/nix/profiles/default/bin/env /usr/bin/env
