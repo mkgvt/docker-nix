@@ -5,7 +5,7 @@
 FROM alpine:3.6 as FETCHER
 
 # Enable HTTPS support in wget.
-RUN apk add --no-cache openssl ca-certificates
+RUN apk add --no-cache openssl ca-certificates curl
 
 # Install it in busybox for a start
 COPY ./version.env ./version.env
@@ -20,14 +20,8 @@ RUN nix-channel --add \
   nix-channel --update
 
 RUN nix-env -iA \
-  nixpkgs.bashInteractive \
-  nixpkgs.cacert \
+  nixpkgs.bash \
   nixpkgs.coreutils \
-  nixpkgs.gitMinimal \
-  nixpkgs.gnutar \
-  nixpkgs.gzip \
-  nixpkgs.iana-etc \
-  nixpkgs.xz \
   && true
 
 # Remove old things

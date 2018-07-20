@@ -4,7 +4,7 @@ set -eux
 set -o pipefail
 . ./version.env
 
-wget -O- https://nixos.org/releases/nix/nix-$NIX_RELEASE/nix-$NIX_RELEASE-x86_64-linux.tar.bz2 > nix.tar.bz2
+curl https://nixos.org/releases/nix/nix-$NIX_RELEASE/nix-$NIX_RELEASE-x86_64-linux.tar.bz2 > nix.tar.bz2
 actual_hash="$(sha256sum -b "nix.tar.bz2" | cut -c1-64)"
 
 

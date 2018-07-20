@@ -1,0 +1,10 @@
+### .gitignore
+
+# Emacs backup files
+*~
+.\#*
+
+# Common patterns to ignore
+*HOLD*
+*.orig
+*.bak
